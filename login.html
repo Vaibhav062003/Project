@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Earphones Branch</title>
+    <style>
+        :root {
+            --bg: #09101f;
+            --surface: #111b34;
+            --accent: #ff6b6b;
+            --text: #f4f7ff;
+            --muted: #aab6d6;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at top, rgba(255,107,107,0.18), transparent 25%),
+                        linear-gradient(180deg, #09101f 0%, #07101c 100%);
+            color: var(--text);
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .container {
+            width: min(480px, 100%);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 28px;
+            padding: 42px 36px;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.24);
+        }
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .brand span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b, #31b4ff);
+            display: inline-block;
+        }
+        h1 {
+            margin: 0 0 22px;
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            line-height: 1.05;
+        }
+        p {
+            margin: 0 0 28px;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+        .form-group {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e5e9ff;
+        }
+        input {
+            width: 100%;
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 16px;
+            background: rgba(255,255,255,0.04);
+            color: var(--text);
+            padding: 16px 18px;
+            font-size: 1rem;
+            outline: none;
+        }
+        input:focus {
+            border-color: rgba(255,107,107,0.72);
+            box-shadow: 0 0 0 4px rgba(255,107,107,0.12);
+        }
+        .button {
+            width: 100%;
+            border: none;
+            border-radius: 999px;
+            padding: 16px 18px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            background: linear-gradient(135deg, #ff6b6b, #31b4ff);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .button:hover {
+            transform: translateY(-1px);
+        }
+        .feedback {
+            margin-top: 18px;
+            font-size: 0.95rem;
+            color: #c3d9ff;
+            min-height: 1.2em;
+        }
+        .link-row {
+            margin-top: 22px;
+            text-align: center;
+        }
+        .link-row a {
+            color: var(--text);
+            opacity: 0.75;
+            text-decoration: none;
+        }
+        .link-row a:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="brand"><span></span>EARPHONES BRANCH</a>
+        <h1>Login to your account</h1>
+        <p>Access your personalized audio settings, purchase history, and product recommendations. This demo login page works locally with no backend required.</p>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="button">Sign In</button>
+            <p class="feedback" id="feedback"></p>
+        </form>
+        <div class="link-row">
+            <a href="index.html">Back to landing page</a>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
