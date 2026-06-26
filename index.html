@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earphones Branch</title>
+    <style>
+        :root {
+            --bg: #0b1223;
+            --surface: #111b34;
+            --accent: #ff6b6b;
+            --accent-soft: #ff9b9b;
+            --text: #f3f6ff;
+            --muted: #a8b3d1;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, rgba(255,107,107,0.15), transparent 28%),
+                        radial-gradient(circle at 80% 20%, rgba(49,180,255,0.12), transparent 26%),
+                        linear-gradient(180deg, #0b1223 0%, #090d18 100%);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(11,18,35,0.80);
+            backdrop-filter: blur(14px);
+        }
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        .brand span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b, #31b4ff);
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+        }
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+            padding: 80px 32px 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero-copy {
+            max-width: 620px;
+        }
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--accent-soft);
+            font-size: 0.85rem;
+            margin-bottom: 18px;
+        }
+        .hero-title {
+            font-size: clamp(3rem, 5vw, 4.8rem);
+            line-height: 0.95;
+            margin: 0;
+        }
+        .hero-text {
+            margin: 24px 0 32px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--muted);
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .button {
+            border: none;
+            border-radius: 999px;
+            padding: 16px 28px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+        .button-primary {
+            background: linear-gradient(135deg, #ff6b6b, #31b4ff);
+            color: #fff;
+            box-shadow: 0 18px 50px rgba(255,107,107,0.18);
+        }
+        .button-secondary {
+            background: rgba(255,255,255,0.08);
+            color: var(--text);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .button:hover {
+            transform: translateY(-1px);
+        }
+        .hero-image {
+            border-radius: 32px;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+            padding: 24px;
+        }
+        .hero-image img {
+            width: 100%;
+            display: block;
+            border-radius: 24px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            padding: 0 32px 56px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 26px;
+            padding: 28px;
+            min-height: 220px;
+            display: grid;
+            gap: 16px;
+        }
+        .feature-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .feature-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+        .testimonial-section {
+            background: rgba(255,255,255,0.04);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 56px 32px;
+        }
+        .testimonial-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .testimonial-card {
+            background: rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 32px;
+        }
+        .testimonial-card p {
+            margin: 0 0 24px;
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+        .testimonial-author {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            color: var(--text);
+        }
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b, #31b4ff);
+            display: inline-grid;
+            place-items: center;
+            color: #fff;
+            font-weight: 700;
+        }
+        .testimonial-author div {
+            line-height: 1.3;
+        }
+        .cta-banner {
+            padding: 56px 32px;
+            text-align: center;
+        }
+        .cta-banner h2 {
+            margin: 0 0 16px;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+        }
+        .cta-banner p {
+            margin: 0 0 28px;
+            color: var(--muted);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.75;
+        }
+        .status-message {
+            margin-top: 16px;
+            color: #d2eaff;
+            font-size: 0.95rem;
+        }
+        .footer {
+            padding: 24px 32px 40px;
+            text-align: center;
+            color: rgba(255,255,255,0.62);
+            font-size: 0.95rem;
+        }
+        @media (max-width: 960px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 680px) {
+            .site-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+            .hero {
+                padding-top: 56px;
+            }
+            .hero-image {
+                padding: 18px;
+            }
+            .nav-links {
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="#top" class="brand"><span></span>EARPHONES BRANCH</a>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#sound">Sound</a>
+            <a href="#reviews">Reviews</a>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="hero-copy">
+                <div class="eyebrow">Premium wireless earphones</div>
+                <h1 class="hero-title">Hear every detail, feel every beat.</h1>
+                <p class="hero-text">Earphones Branch brings studio-grade audio, unmatched comfort, and a sleek design crafted for daily life. Discover wireless freedom, active noise cancellation, and up to 36 hours of playtime.</p>
+                <div class="hero-actions">
+                    <button class="button button-primary" id="buy-now">Buy Now</button>
+                    <button class="button button-secondary" id="learn-more">Learn More</button>
+                </div>
+                <p class="status-message" id="statusMessage">Ready to shop or explore features locally.</p>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1512499617640-c2f999b41f3f?auto=format&fit=crop&w=1200&q=80" alt="Wireless earphones displayed on dark surface">
+            </div>
+        </section>
+
+        <section class="feature-grid" id="features">
+            <article class="feature-card">
+                <h3>Immersive sound</h3>
+                <p>Experience powerful bass, crisp mids, and crystal-clear highs with custom-tuned drivers for every genre.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Long-lasting battery</h3>
+                <p>Up to 36 hours of playback and fast-charge support so you stay connected all day without compromise.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Comfort fit</h3>
+                <p>Lightweight ear tips and ergonomic design keep your earphones secure during workouts, commutes, and travel.</p>
+            </article>
+        </section>
+
+        <section class="testimonial-section" id="sound">
+            <div class="testimonial-inner">
+                <div>
+                    <h2>Built for sound lovers and creators.</h2>
+                    <p>From blockbusters to podcasts, Earphones Branch delivers rich audio detail without sacrificing comfort. The adaptive noise cancellation keeps you present in every moment.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The clarity and depth are incredible. These earphones feel premium from the first listen and the battery life is exactly what I need for my workdays."</p>
+                    <div class="testimonial-author">
+                        <span class="author-avatar">AB</span>
+                        <div>
+                            <strong>Ava Barnes</strong><br>
+                            Audio Producer
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-banner" id="reviews">
+            <h2>It’s time to upgrade your listening experience.</h2>
+            <p>Shop the Earphones Branch collection now and enjoy a new level of audio freedom on localhost without any setup errors.</p>
+            <button class="button button-primary" id="ctaButton">Start Shopping</button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        &copy; <span id="year"></span> Earphones Branch. Designed for local demo and error-free browsing.
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
