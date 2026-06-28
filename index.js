@@ -1,4 +1,4 @@
-#comment 
+#updatedcomment 
 
 document.addEventListener('DOMContentLoaded', function () {
     var yearEl = document.getElementById('year');
